@@ -1,0 +1,23 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "demo_bd"
+      POSTGRES_USER: "demo_user"
+      POSTGRES_PASSWORD: "demo_pass"
+  demo:
+    image: demo:0.0.1-SNAPSHOT
+    networks:
+      - webnet
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/demo_bd
+      - SPRING_DATASOURCE_USERNAME=demo_user
+      - SPRING_DATASOURCE_PASSWORD=demo_pass
+    ports:
+      - "8080:8080"
+networks:
+  webnet:

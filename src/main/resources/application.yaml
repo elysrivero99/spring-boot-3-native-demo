@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/demo_bd
+    username: demo_user
+    password: demo_pass
+  jpa:
+    generate-ddl: true
